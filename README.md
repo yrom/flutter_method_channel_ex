@@ -1,7 +1,16 @@
-# flutter_fat_json_method_channel
+# fat_json_method_channel
 Encode/decode method channel's arguments/result in different Isolate (based on package '[dart-executor](https://github.com/yrom/dart-executor)'), alternative for `JSONMethodChannel`.
 
 ## Usage
+
+Add dependency in `pubspec.yaml`:
+
+```yaml
+dependencies:
+  fat_json_method_channel: 
+    git: https://github.com/yrom/fat_json_method_channel.git
+```
+
 In flutter:
 ```dart
 import 'package:fat_json_method_channel/fat_json_method_channel.dart';
