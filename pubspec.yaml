@@ -1,0 +1,19 @@
+name: fat_json_method_channel
+description: A method channel for handling fat json.
+version: 0.0.1
+author: Yrom Wang <hi@yongrong.wang>
+homepage: https://github.com/yrom/fat_json_method_channel
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  executor: 
+    git: https://github.com/yrom/dart-executor.git
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+ 
