@@ -19,7 +19,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  fat_json_method_channel:
+  method_channel_ex:
     path: ../
 
 dev_dependencies:

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:fat_json_method_channel/fat_json_method_channel.dart';
+import 'package:method_channel_ex/method_channel_ex.dart';
 
 void main() => runApp(MyApp());
 
-var channel = FatJsonMethodChannel("test");
+var channel = StandardMethodChannel("test");
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.

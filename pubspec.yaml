@@ -1,8 +1,8 @@
-name: fat_json_method_channel
-description: A method channel for handling fat json.
+name: method_channel_ex
+description: Alternative Flutter method channel.
 version: 0.0.1
 author: Yrom Wang <hi@yongrong.wang>
-homepage: https://github.com/yrom/fat_json_method_channel
+homepage: https://github.com/yrom/flutter_method_channel_ex
 
 environment:
   sdk: ">=2.1.0 <3.0.0"

@@ -3,7 +3,7 @@ package com.example.example
 import android.os.Bundle
 
 import io.flutter.app.FlutterActivity
-import io.flutter.plugin.common.JSONMethodCodec
+import io.flutter.plugin.common.StandardMethodCodec
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugins.GeneratedPluginRegistrant
 import org.json.JSONObject
@@ -15,10 +15,10 @@ class MainActivity : FlutterActivity() {
         MethodChannel(
             flutterView,
             "test",
-            JSONMethodCodec.INSTANCE
+            StandardMethodCodec.INSTANCE
         ).setMethodCallHandler { methodCall, result ->
             if (methodCall.method == "getAFatJson") {
-                val json = JSONObject()
+                val json = LinkedHashMap<String, String>()
 
                 for (i in 1..1000) {
                     json.put("$i", "abc".repeat(i % 10))
