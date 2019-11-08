@@ -4,8 +4,8 @@ import 'package:flutter/services.dart';
 import 'utils.dart';
 
 class StandardMethodChannel extends MethodChannel {
-  StandardMethodChannel(String name) : super(name, const StandardMethodCodec2());
-
+  const StandardMethodChannel(String name)
+      : super(name, const StandardMethodCodec2());
 
   @override
   Future<T> invokeMethod<T>(String method, [arguments]) async {
@@ -48,9 +48,13 @@ class StandardMethodCodec2 extends StandardMethodCodec {
     final dynamic errorCode = messageCodec.readValue(buffer);
     final dynamic errorMessage = messageCodec.readValue(buffer);
     final dynamic errorDetails = messageCodec.readValue(buffer);
-    if (errorCode is String && (errorMessage == null || errorMessage is String) && !buffer.hasRemaining)
-      throw PlatformException(code: errorCode, message: errorMessage, details: errorDetails);
-    else
+    if (errorCode is String &&
+        (errorMessage == null || errorMessage is String) &&
+        !buffer.hasRemaining) {
+      throw PlatformException(
+          code: errorCode, message: errorMessage, details: errorDetails);
+    } else {
       throw const FormatException('Invalid envelope');
+    }
   }
 }
