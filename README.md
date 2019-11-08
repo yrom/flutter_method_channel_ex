@@ -2,7 +2,10 @@
 Alternative Flutter method channel.
 
 ## FatJsonMethodChannel
-Encode/decode method channel's arguments/result in different Isolate (based on package '[dart-executor](https://github.com/yrom/dart-executor)'), alternative for `JSONMethodChannel`.
+Decode method channel's result in different Isolate (based on package '[dart-executor](https://github.com/yrom/dart-executor)'), alternative for `MethodChannel` which using `JSONMethodCodec`.
+
+## StandardMethodChannel
+Alternative for `MethodChannel` which using `StandardMethodCodec`.
 
 ## Usage
 
