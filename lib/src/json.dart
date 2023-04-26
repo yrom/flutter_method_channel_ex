@@ -10,7 +10,7 @@ class FatJsonMethodChannel extends MethodChannel {
       : super(name, const FatJsonMethodCodec());
 
   @override
-  Future<T> invokeMethod<T>(String method, [arguments]) async {
+  Future<T?> invokeMethod<T>(String method, [arguments]) async {
     final ByteData? result = await binaryMessenger.send(
       name,
       codec.encodeMethodCall(MethodCall(method, arguments)),
@@ -25,7 +25,7 @@ class FatJsonMethodChannel extends MethodChannel {
       return await decoded;
     }
     // ignore: avoid_as
-    return decoded as T;
+    return decoded as T?;
   }
 }
 /// Encode and decode fat-json for method arguments in different [Isolate].
@@ -41,8 +41,9 @@ class FatJsonMethodCodec extends JSONMethodCodec {
     } else {
       result = decoded;
     }
-    if (result is! List)
+    if (result is! List) {
       throw FormatException('Expected envelope List, got $result');
+    }
     if (result.length == 1) return result[0];
     if (result.length == 3 &&
         result[0] is String &&

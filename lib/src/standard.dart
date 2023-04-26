@@ -8,7 +8,7 @@ class StandardMethodChannel extends MethodChannel {
       : super(name, const StandardMethodCodec2());
 
   @override
-  Future<T> invokeMethod<T>(String method, [arguments]) async {
+  Future<T?> invokeMethod<T>(String method, [arguments]) async {
     final ByteData? result = await binaryMessenger.send(
       name,
       codec.encodeMethodCall(MethodCall(method, arguments)),
@@ -23,7 +23,7 @@ class StandardMethodChannel extends MethodChannel {
       return await decoded;
     }
     // ignore: avoid_as
-    return decoded as T;
+    return decoded as T?;
   }
 }
 
@@ -33,16 +33,12 @@ class StandardMethodCodec2 extends StandardMethodCodec {
   @override
   Future<dynamic> decodeEnvelope(ByteData envelope) async {
     /// see [StandardMethodCodec.decodeEnvelope]
-    if (envelope.lengthInBytes == 0)
+    if (envelope.lengthInBytes == 0) {
       throw const FormatException('Expected envelope, got nothing');
+    }
     final ReadBuffer buffer = ReadBuffer(envelope);
     if (buffer.getUint8() == 0) {
-      dynamic decoded = decodeStandardMessageBuffer(buffer);
-      if (decoded is Future) {
-        return await decoded;
-      } else {
-        return decoded;
-      }
+      return decodeStandardMessageBuffer(buffer);
     }
     final dynamic errorCode = messageCodec.readValue(buffer);
     final dynamic errorMessage = messageCodec.readValue(buffer);
