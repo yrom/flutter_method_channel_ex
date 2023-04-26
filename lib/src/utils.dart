@@ -9,7 +9,7 @@ const _max_json_bytes = 12 * 1024;
 const _max_strlen = 6 * 1024;
 
 /// result can be [List], [Map], [Future], and null
-dynamic decodeJson(Uint8List bytes) {
+dynamic decodeJson(Uint8List? bytes) {
   if (bytes == null) return null;
   if (bytes.lengthInBytes <= _max_json_bytes) {
     return _decodeMessage(bytes);
@@ -22,7 +22,7 @@ dynamic decodeJson(Uint8List bytes) {
 }
 
 /// result can be [List], [Map], [Future], and null
-dynamic decodeJsonString(String source) {
+dynamic decodeJsonString(String? source) {
   if (source == null) return null;
   if (source.length <= _max_strlen) {
     return json.decode(source);

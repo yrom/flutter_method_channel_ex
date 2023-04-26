@@ -9,8 +9,7 @@ class StandardMethodChannel extends MethodChannel {
 
   @override
   Future<T> invokeMethod<T>(String method, [arguments]) async {
-    assert(method != null);
-    final ByteData result = await binaryMessenger.send(
+    final ByteData? result = await binaryMessenger.send(
       name,
       codec.encodeMethodCall(MethodCall(method, arguments)),
     );

@@ -1,15 +1,15 @@
 name: method_channel_ex
 description: Alternative Flutter method channel.
-version: 0.0.2
+version: 0.0.3
 author: Yrom Wang <hi@yongrong.wang>
 homepage: https://github.com/yrom/flutter_method_channel_ex
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   executor: 
-    git: https://github.com/yrom/dart-executor.git
+    git: https://git.bilibili.co/phoenix/dart-executor.git
   flutter:
     sdk: flutter
 

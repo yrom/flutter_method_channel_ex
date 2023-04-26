@@ -11,8 +11,7 @@ class FatJsonMethodChannel extends MethodChannel {
 
   @override
   Future<T> invokeMethod<T>(String method, [arguments]) async {
-    assert(method != null);
-    final ByteData result = await binaryMessenger.send(
+    final ByteData? result = await binaryMessenger.send(
       name,
       codec.encodeMethodCall(MethodCall(method, arguments)),
     );
@@ -62,7 +61,7 @@ class FatJsonMessageCodec extends JSONMessageCodec {
   const FatJsonMessageCodec();
 
   @override
-  dynamic decodeMessage(ByteData message) {
+  dynamic decodeMessage(ByteData? message) {
     if (message == null) return null;
     var bytes = message.buffer
         .asUint8List(message.offsetInBytes, message.lengthInBytes);
